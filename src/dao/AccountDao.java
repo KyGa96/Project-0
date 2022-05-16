@@ -13,8 +13,8 @@ public interface AccountDao {
 	
 	void deleteAccount(int AccountNumber); // delete
 	
-	List<AccountPojo> Overdraft()throws OverdraftException; // Read ???????************************
+	List<AccountPojo> Overdraft()throws OverdraftException; // Read 
 	
-	AccountPojo generateAccountNo(int accountNumber);//???******************************
+	AccountPojo generateAccountNo(int accountNumber);
 
 }

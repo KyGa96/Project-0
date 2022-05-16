@@ -2,16 +2,18 @@ package model;
 
 public class AccountPojo {
 	private int accountNumber;
-	private Double accountBalance; 
+	private Double accountBalance;
+	
 	
 	public AccountPojo() { //default constructor
 		super();
 	}
 
-	public AccountPojo(int accountNumber, String accountHolderName, Double accountBalance) { //Parameterized constructor
+	public AccountPojo(int accountNumber, String accountName, Double accountBalance) { //Parameterized constructor
 		super();
 		this.accountNumber = accountNumber;
 		this.accountBalance = accountBalance;
+		
 	}
 
 	public int getAccountNumber() {
@@ -30,10 +32,10 @@ public class AccountPojo {
 		this.accountBalance = accountBalance;
 	}
 
+	
 	@Override
 	public String toString() { //toString Method -- gives a string representation of the object -- when an accountPojo object is created, it will call the toString method and print the information below -- ties all variables together for debugging
-		return "AccountPojo [accountNumber=" + accountNumber + ", accountName=" + ", accountBalance="
-				+ accountBalance + "]";
+		return "AccountPojo [accountNumber=" + accountNumber + ", accountBalance=" + accountBalance + "]";
 	}
 	
 	

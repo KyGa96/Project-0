@@ -1,5 +1,5 @@
 package service;
 
-public class AccountServiceImpl {
+public class AccountServiceImpl implements AccountService{
 
 }
