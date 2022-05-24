@@ -1,20 +1,18 @@
 package dao;
 
-import java.util.List;
 
 import exception.OverdraftException;
 import model.AccountPojo;
 
 public interface AccountDao {
 	
-	AccountPojo addAccount (AccountPojo accountPojo); //create
 	
-	AccountPojo updateAccount(AccountPojo accountPojo); //update
 	
-	void deleteAccount(int AccountNumber); // delete
+	AccountPojo WithdrawFromAccount(AccountPojo accountPojo); 
 	
-	List<AccountPojo> Overdraft()throws OverdraftException; // Read 
+	AccountPojo DepositToAccount(AccountPojo accountPojo); 
 	
-	AccountPojo generateAccountNo(int accountNumber);
-
+	AccountPojo AccountNumber(AccountPojo accountPojo);
+	
+	AccountPojo AccountBalance(AccountPojo accountPojo);
 }

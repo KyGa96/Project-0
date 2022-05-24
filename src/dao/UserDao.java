@@ -1,21 +1,17 @@
 package dao;
 
-import java.util.List;
 
 import exception.InvalidLogin;
+import exception.SystemException;
+import model.AccountPojo;
 import model.UserPojo;
 
 public interface UserDao {
 	
-	UserPojo updateUser(UserPojo UserPojo); //update
+	UserPojo addUser(UserPojo userPojo, AccountPojo accountPojo) throws SystemException;
 	
-	void deleteUser(int userName); // delete
+	UserPojo loginUser(UserPojo userPojo) throws SystemException;
 	
-	List<UserPojo> psswordIncorrect()throws InvalidLogin; // Read 
-	
-	UserPojo generateAccountNo(int accountNumber);
-
-	UserPojo addUser(UserPojo UserPojo);
 
 }
 

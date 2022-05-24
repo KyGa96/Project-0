@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -10,7 +11,7 @@ public class DBUtil {
 	
 	static {
 		try {
-			Class.forName("org.h2.Driver");
+			Class.forName("org.postgresql.Driver");
 			
 		}catch (ClassNotFoundException e){
 			
@@ -18,11 +19,11 @@ public class DBUtil {
 		}
 	}
 	static Connection makeConnection() throws SQLException{
-		String connectionURL = "jdbc:h2:tcp://localhost/~/test";
-		String username = "sa";
-		String password = "";
+		String connectionUrl = "jdbc:postgresql://localhost:5432/postgres";
+		String username = "postgres";
+		String password = "LionSalad4t56";
 		if(conn == null) {
-			conn = DriverManager.getConnection(connectionURL, username, password);
+			conn = DriverManager.getConnection(connectionUrl, username, password);
 		}
 		return conn;
 	}

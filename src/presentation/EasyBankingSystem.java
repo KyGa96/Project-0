@@ -3,7 +3,10 @@ package presentation;
 
 import java.util.List;
 
+
 import java.util.Scanner;
+
+import exception.SystemException;
 import model.AccountPojo;
 import model.UserPojo;
 import service.AccountService;
@@ -44,36 +47,40 @@ public class EasyBankingSystem {
 				switch(selection) {					
 						
 						case 1:
-							UserPojo UserPojo = new UserPojo();
+							UserPojo newUserPojo = new UserPojo();
+							AccountPojo newAccountPojo = new AccountPojo();
 							System.out.println("|-----------------------------------------------|");
 							System.out.println("|***WELCOME TO EASY BANKING MANAGEMENT SYSTEM***|");
 							System.out.println("|-----------------------------------------------|");
 							System.out.println("|         PLEASE ENTER A NEW USERNAME           |");
 							System.out.println("|-----------------------------------------------|");
-							UserPojo.setUsername(menu.nextLine());
 							
-						    menu.nextLine();
+							menu.nextLine();
+							newUserPojo.setUsername(menu.nextLine());
+							
+							
 							System.out.println("|-----------------------------------------------|");
 							System.out.println("|***WELCOME TO EASY BANKING MANAGEMENT SYSTEM***|");
 							System.out.println("|-----------------------------------------------|");
 							System.out.println("|          PLEASE ENTER A NEW PASSWORD          |");
+							System.out.println("|                (LETTERS ONLY)                 |");
 							System.out.println("|-----------------------------------------------|");
-							UserPojo.setPassword(menu.nextLine());
+							newUserPojo.setPassword(menu.nextLine());
+							UserPojo returnedUserPojo = null;
 							
-							System.out.println("|-------------------------------------------|");
+								try {
+									returnedUserPojo = userService.addUser(newUserPojo, newAccountPojo);
+								}
+								catch(SystemException e) {
+									System.out.println(e.getMessage());
+									break;
+								}
+						
+						    System.out.println("|-------------------------------------------|");
 							System.out.println("|   ***EASY BANKING MANAGEMENT SYSTEM***    |");
 							System.out.println("|-------------------------------------------|");
 							System.out.println("| YOUR ACCOUNT HAS BEEN SUCESSFULLY CREATED!|");
-							System.out.println("|                                           |");
 							System.out.println("|             WELCOME NEW USER!!            |");
-							System.out.println("|                                           |");
-							System.out.println("|              CONTINUE? (Y/N)              |");
-							System.out.println("|-------------------------------------------|");
-							proceed = menu.nextLine();
-							
-							System.out.println("|-------------------------------------------|");
-							System.out.println("|   ***EASY BANKING MANAGEMENT SYSTEM***    |");
-							System.out.println("|-------------------------------------------|");
 							System.out.println("|        PLEASE INPUT YOUR SELECTION        |");
 							System.out.println("|                                           |");
 							System.out.println("|1) WITHDRAW FROM ACCOUNT                   |");
@@ -91,7 +98,10 @@ public class EasyBankingSystem {
 									System.out.println("|          ***EASY BANKING MANAGEMENT SYSTEM***          |");
 									System.out.println("|--------------------------------------------------------|");
 									System.out.println("|PLEASE INPUT THE AMOUNT YOU WOULD LIKE TO WITHDRAW BELOW|");
+									System.out.println("|                                                        |");
+									System.out.println("|                   TYPE EXIT TO QUIT                    |");
 									System.out.println("|--------------------------------------------------------|");
+									
 									break;
 									
 								case 2:
@@ -100,8 +110,11 @@ public class EasyBankingSystem {
 									System.out.println("|          ***EASY BANKING MANAGEMENT SYSTEM***         |");
 									System.out.println("|-------------------------------------------------------|");
 									System.out.println("|PLEASE INPUT THE AMOUNT YOU WOULD LIKE TO DEPOSIT BELOW|");
+									System.out.println("|                                                       |");
+									System.out.println("|                   TYPE EXIT TO QUIT                   |");
 									System.out.println("|-------------------------------------------------------|");
 									break;
+									
 								case 3:
 									System.out.println("|-----------------------------------------------------------|");
 									System.out.println("|***THANK YOU FOR CHOOSING EASY BANKING MANAGEMENT SYSTEM***|");
